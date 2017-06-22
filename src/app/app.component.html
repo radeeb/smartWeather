@@ -1,3 +1,32 @@
-<h1>
-  {{title}}
-</h1>
+<!doctype html>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+      </button>
+      <a class="navbar-brand" href="#">SmartWeather</a>
+    </div>
+  </div>
+</nav>
+
+<nav class="navbar-nav">
+  <button class="btn btn-outline-success" type="button"><a class="active" routerLink="/weather">Weather</a></button>
+  <button class="btn btn-outline-success" type="button"><a routerLink="/weatherdetail">Weather Detail</a></button>
+</nav>
+
+<div class="col-sm-8">
+
+<div class = 'vertical-buffer-3'>
+<router-outlet></router-outlet>
+</div>
+</div>
+<div class="col-sm-2 sidenav">
+  <div class="well">
+    <p>Your Saved Locations (ZIP)</p>
+    <ul>
+        <li *ngFor=" let z of zipCodes">
+            {{z}}
+         </li>
+    </ul>
+  </div>
+</div>

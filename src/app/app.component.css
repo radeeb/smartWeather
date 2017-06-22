@@ -1,0 +1,33 @@
+nav a {
+  padding: 2px 5px;
+  text-decoration: none;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+
+.col-sm-8 {
+    background-color: #c1cdcd;
+    margin-top: 0.01em;
+    margin-left: 5em;
+    border-color: black;
+}
+
+.vertical-buffer-3 {
+    margin-top: 4em;
+}
+
+.navbar-brand {
+    margin-right: 3em;
+    font-size: 20pt;
+}
+
+.navbar-nav {
+    margin-left: 6em;
+    width: 100%;
+    font-size: 15pt;
+}
+
+.btn {
+    border-radius: 0;
+}
