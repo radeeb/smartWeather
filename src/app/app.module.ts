@@ -7,6 +7,7 @@ import {AppRoutingModule} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WeatherComponent} from './weather.component';
 import { WeatherDetailComponent} from './weather-detail.component';
+import { WeatherService} from './weather.service';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyDN3cVFUdNOMSj1tzN2wOR9TdB-jwmueiA",
@@ -30,7 +31,7 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [WeatherService], //because you will need it in every view
   bootstrap: [AppComponent]
 })
 export class AppModule { }

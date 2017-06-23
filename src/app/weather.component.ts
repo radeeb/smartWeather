@@ -4,6 +4,7 @@ import { AngularFire, AuthProviders, AuthMethods} from 'angularfire2';
 import { AngularFireAuth} from 'angularfire2/auth';
 import {AngularFireDatabase, FirebaseObjectObservable} from 'angularfire2/database';
 import {firebaseConfig} from './app.module';
+import { WeatherService} from './weather.service';
 
 import { Router} from '@angular/router';
 
@@ -12,18 +13,29 @@ import { Router} from '@angular/router';
   templateUrl: './weather.component.html',
   styleUrls: ['./app.component.css']
 })
-export class WeatherComponent {
-  cityName = "Springfield";
+export class WeatherComponent implements OnInit {
+  city = "Loading";
+  temp = "Loading";
   zip1;
 
-  item: FirebaseObjectObservable<any>;
-  constructor(db: AngularFireDatabase , private router: Router) {
-      this.item = db.object('/user1/fav1', { preserveSnapshot: true });
-  this.item.subscribe(snapshot => {
-  console.log(snapshot.val())
-  this.zip1 = snapshot.val();
-  console.log(this.zip1);
-});
-  }
+  constructor(private dataService:WeatherService){}
+
+  ngOnInit() {
+    //console.log(this.dataService.getWeather())
+    let url = 'http://api.openweathermap.org/data/2.5/weather?zip=65802' +
+    //this.zipCode +
+    '&appid=b86dc3179d853356b32565e7717caca5'+
+    '&units=imperial';
+    fetch(url)
+    .then(function(response){
+        return response.json();
+
+
+    }).then(function(json){
+        console.log(json);
+        this.city = json.name;
+        this.temp = json.main.temp;
+    }.bind(this));
+    }
 
  }
